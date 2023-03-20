@@ -22,6 +22,11 @@
             <files mask="lwip_iperf_bm_cm7_v3_10.xml"/>
           </external>
         </example>
+        <example id="phytec_pcm073_igpio_led_output_cm7" name="igpio_led_output_cm4" brief="The GPIO Example project is a demonstration program that uses the KSDK software to manipulate the general-purposeoutputs.The example is supported by the set, clear, and toggle write-only registers for each port output data register. The example take turns to shine the LED." toolchain="armgcc mcuxpresso" compiler="compiler_gcc" category="driver_examples/gpio" path="driver_examples/gpio/led_output/cm7">
+          <external path="driver_examples/gpio/led_output/cm7" type="xml">
+            <files mask="igpio_led_output_cm7_v3_10.xml"/>
+          </external>
+        </example>
       </examples>
     </board>
   </boards>
