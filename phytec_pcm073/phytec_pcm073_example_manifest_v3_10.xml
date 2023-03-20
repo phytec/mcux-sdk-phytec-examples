@@ -27,9 +27,14 @@
             <files mask="igpio_led_output_cm7_v3_10.xml"/>
           </external>
         </example>
-        <example id="phytec_pcm073_lpi2c_eeprom_cm7" name="lpi2c_eeprom_cm7" brief="The lpi2c_eeprom_slave example shows how to use lpi2c driver as slave to do board to board transfer with a polling master:In this example, one lpi2c instance as slave and another lpi2c instance on the other board as master. Master sends a piece of data to slave, and receive a piece of data from slave. This example checks if the data received from slave is correct." toolchain="armgcc mcuxpresso" compiler="compiler_gcc" category="driver_examples/lpi2c" path="boards/phytec_pcm073/driver_examples/lpi2c/eeprom/cm7">
+        <example id="phytec_pcm073_lpi2c_eeprom_cm7" name="lpi2c_eeprom_cm7" brief="The lpi2c_eeprom_slave example shows how to use lpi2c driver as slave to do board to board transfer with a polling master:In this example, one lpi2c instance as slave and another lpi2c instance on the other board as master. Master sends a piece of data to slave, and receive a piece of data from slave. This example checks if the data received from slave is correct." toolchain="armgcc mcuxpresso" compiler="compiler_gcc" category="driver_examples/lpi2c" path="driver_examples/lpi2c/eeprom/cm7">
           <external path="driver_examples/lpi2c/eeprom/cm7" type="xml">
             <files mask="lpi2c_eeprom_cm7_v3_10.xml"/>
+          </external>
+        </example>
+        <example id="phytec_pcm073_lpuart_polling_cm7" name="lpuart_polling_cm7" brief="The lpuart_polling Example project is to demonstrate usage of the KSDK lpuart driver.In the example, you can send characters to the console back and they will be printed out onto console instantly." toolchain="armgcc mcuxpresso" compiler="compiler_gcc" category="driver_examples/lpuart" path="driver_examples/lpuart/polling/cm7">
+          <external path="driver_examples/lpuart/polling/cm7" type="xml">
+            <files mask="lpuart_polling_cm7_v3_10.xml"/>
           </external>
         </example>
       </examples>
