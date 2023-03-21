@@ -42,6 +42,11 @@
             <files mask="guix_washing_machine_hd_v3_10.xml"/>
           </external>
         </example>
+        <example id="phytec_pcm073_reg_rw_cm7" name="reg_rw_cm7" brief="The reg_rw example shows how to read and write registers." toolchain="armgcc mcuxpresso" compiler="compiler_gcc" category="demo_examples" path="demo_apps/reg_rw/cm7">
+          <external path="demo_apps/reg_rw/cm7" type="xml">
+            <files mask="reg_rw_cm7_v3_10.xml"/>
+          </external>
+        </example>
       </examples>
     </board>
   </boards>
