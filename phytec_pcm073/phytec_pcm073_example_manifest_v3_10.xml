@@ -37,6 +37,11 @@
             <files mask="lpuart_polling_cm7_v3_10.xml"/>
           </external>
         </example>
+        <example id="phytec_pcm073_guix_washing_machine_hd" name="guix_washing_machine_hd" brief="The guix_washing_machine_hd example." toolchain="armgcc mcuxpresso" compiler="compiler_gcc" category="azure_rtos_examples" path="azure_rtos_examples/guix_washing_machine_hd/cm7">
+          <external path="azure_rtos_examples/guix_washing_machine_hd/cm7" type="xml">
+            <files mask="guix_washing_machine_hd_v3_10.xml"/>
+          </external>
+        </example>
       </examples>
     </board>
   </boards>
