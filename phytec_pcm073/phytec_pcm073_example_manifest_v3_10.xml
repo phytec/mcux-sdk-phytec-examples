@@ -17,6 +17,11 @@
             <files mask="lwip_dhcp_bm_cm7_v3_10.xml"/>
           </external>
         </example>
+        <example id="phytec_pcm073_lwip_compliance_testing_bm_cm7" name="lwip_compliance_testing_bm_cm7" brief="The lwip_compliance_testing demo application demonstrates a DHCP demo on the lwIP TCP/IP stack.The application acts as a DHCP client and prints the status as it is progressing.Once the interface is being bound to an IP address obtained from DHCP server, address information is printed." toolchain="armgcc mcuxpresso" compiler="compiler_gcc" category="lwip_examples" path="lwip_examples/lwip_compliance_testing/bm/cm7">
+          <external path="lwip_examples/lwip_compliance_testing/bm/cm7" type="xml">
+            <files mask="lwip_compliance_testing_bm_cm7_v3_10.xml"/>
+          </external>
+        </example>
         <example id="phytec_pcm073_lwip_iperf_bm_cm7" name="lwip_iperf_bm_cm7" brief="This is the IPerf server example to check your bandwidth using the network performance measurement IPerf application on a PC as a client.It is currently a minimal implementation providing an IPv4 TCP server only.Instead of the command line IPerf application, for more convenience, it is recommended to use the JPerf2 graphical tool, which can be downloaded here: https://sourceforge.net/projects/iperf/files/jperf/jperf%202.0.0/jperf-2.0.0.zip/download" toolchain="armgcc mcuxpresso" compiler="compiler_gcc" category="lwip_examples" path="lwip_examples/lwip_iperf/bm/cm7">
           <external path="lwip_examples/lwip_iperf/bm/cm7" type="xml">
             <files mask="lwip_iperf_bm_cm7_v3_10.xml"/>
