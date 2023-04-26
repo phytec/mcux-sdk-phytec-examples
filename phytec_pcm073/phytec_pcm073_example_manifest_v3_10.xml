@@ -62,7 +62,11 @@
             <files mask="sai_interrupt_record_playback_cm7_v3_10.xml"/>
           </external>
         </example>
-
+        <example id="phytec_pcm073_sdcard_fatfs_cm7" name="sdcard_fatfs_cm7" brief="The SDCARD FATFS project is a demonstration program that uses the SDK software. Tt mounts a file system based on a SD card then does &quot;creat directory/read directory/create file/write file/read file&quot;operation. The file sdhc_config.h has default SDHC configuration which can be adjusted to let carddriver has different performance. The purpose of this example is to show how to use SDCARD driver based FATFS disk in SDK software." toolchain="armgcc mcuxpresso" compiler="compiler_gcc" category="sdmmc_examples/sdcard_fatfs" path="sdmmc_examples/sdcard_fatfs/cm7">
+          <external path="sdmmc_examples/sdcard_fatfs/cm7" type="xml">
+            <files mask="sdcard_fatfs_cm7_v3_10.xml"/>
+          </external>
+        </example>
       </examples>
     </board>
   </boards>
