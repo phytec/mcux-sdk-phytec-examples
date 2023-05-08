@@ -1,0 +1,14 @@
+CMakeCache.txt
+cmake_install.cmake
+CMakeFiles/
+Makefile
+*.log
+ddr_debug/
+ddr_release/
+debug/
+flash_debug/
+flash_release/
+output.map
+release/
+build_log.txt
+output.map
