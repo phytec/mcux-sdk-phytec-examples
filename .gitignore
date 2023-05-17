@@ -12,3 +12,5 @@ output.map
 release/
 build_log.txt
 output.map
+compile_commands.json
+.cache
