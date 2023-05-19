@@ -67,6 +67,11 @@
             <files mask="sdcard_fatfs_cm7_v3_10.xml"/>
           </external>
         </example>
+        <example id="phytec_pcm073_mpp_camera_view_cm7" name="mpp_camera_view_cm7" brief="MPP Camera View Example" toolchain="armgcc mcuxpresso" compiler="compiler_gcc" category="eiq_examples" path="eiq_examples/mpp_camera_view">
+          <external path="eiq_examples/mpp_camera_view" type="xml">
+            <files mask="mpp_camera_view_cm7_v3_10.xml"/>
+          </external>
+        </example>	
       </examples>
     </board>
   </boards>
