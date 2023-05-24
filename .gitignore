@@ -3,6 +3,7 @@ cmake_install.cmake
 CMakeFiles/
 Makefile
 *.log
+*.patch
 ddr_debug/
 ddr_release/
 debug/
