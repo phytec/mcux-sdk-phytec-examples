@@ -52,11 +52,6 @@
             <files mask="reg_rw_cm7_v3_10.xml"/>
           </external>
         </example>
-        <example id="phytec_pcm073_maestro_playback" name="maestro_playback" brief="Audio maestro framework demo example." toolchain="armgcc mcuxpresso" compiler="compiler_gcc" category="audio_examples" path="audio_examples/maestro_playback/cm7">
-          <external path="audio_examples/maestro_playback/cm7" type="xml">
-            <files mask="maestro_playback_v3_10.xml"/>
-          </external>
-        </example>
         <example id="phytec_pcm073_sai_interrupt_record_playback_cm7" name="sai_interrupt_record_playback_cm7" brief="The sai_interrupt_record_playback example shows how to use sai driver with record and playback features: In this example, one sai instance record the audio data from input and playbacks the audio data." toolchain="armgcc mcuxpresso" compiler="compiler_gcc" category="driver_examples/sai" path="driver_examples/sai/interrupt_record_playback/cm7">
           <external path="driver_examples/sai/interrupt_record_playback/cm7" type="xml">
             <files mask="sai_interrupt_record_playback_cm7_v3_10.xml"/>
