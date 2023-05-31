@@ -1,5 +1,6 @@
 /*
  * Copyright 2018 NXP
+ * Copyright 2023 PHYTEC Messtechnik GmbH
  * All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
@@ -12,24 +13,6 @@
  * Definitions
  ******************************************************************************/
 /* Fractional PLLs: Fout = ((mainDiv+dsm/65536) * refSel) / (preDiv * 2^ postDiv) */
-/* AUDIO PLL1 configuration */
-const ccm_analog_frac_pll_config_t g_audioPll1Config = {
-    .refSel  = kANALOG_PllRefOsc24M, /*!< PLL reference OSC24M */
-    .mainDiv = 262U,
-    .dsm     = 9437U,
-    .preDiv  = 2U,
-    .postDiv = 3U, /*!< AUDIO PLL1 frequency  = 393216000HZ */
-};
-
-/* AUDIO PLL2 configuration */
-const ccm_analog_frac_pll_config_t g_audioPll2Config = {
-    .refSel  = kANALOG_PllRefOsc24M, /*!< PLL reference OSC24M */
-    .mainDiv = 361U,
-    .dsm     = 17511U,
-    .preDiv  = 3U,
-    .postDiv = 3U, /*!< AUDIO PLL2 frequency  = 361267200HZ */
-};
-
 /* Integer PLLs: Fout = (mainDiv * refSel) / (preDiv * 2^ postDiv) */
 /* SYSTEM PLL1 configuration */
 const ccm_analog_integer_pll_config_t g_sysPll1Config = {
@@ -82,9 +65,6 @@ void BOARD_BootClockRUN(void)
     //    CLOCK_InitSysPll2(&g_sysPll2Config); /* init SYSTEM PLL2 run at 1000MHZ */
     //    CLOCK_InitSysPll3(&g_sysPll3Config); /* init SYSTEM PLL3 run at 750MHZ */
 
-    CLOCK_InitAudioPll1(&g_audioPll1Config); /* init AUDIO PLL1 run at 393216000HZ */
-    CLOCK_InitAudioPll2(&g_audioPll2Config); /* init AUDIO PLL2 run at 361267200HZ */
-
     CLOCK_SetRootDivider(kCLOCK_RootM4, 1U, 2U);
     CLOCK_SetRootMux(kCLOCK_RootM4, kCLOCK_M4RootmuxSysPll1); /* switch cortex-m4 to SYSTEM PLL1 */
 
@@ -92,9 +72,6 @@ void BOARD_BootClockRUN(void)
 
     CLOCK_SetRootDivider(kCLOCK_RootAhb, 1U, 1U);
     CLOCK_SetRootMux(kCLOCK_RootAhb, kCLOCK_AhbRootmuxSysPll1Div6); /* switch AHB to SYSTEM PLL1 DIV6 = 133MHZ */
-
-    CLOCK_SetRootDivider(kCLOCK_RootAudioAhb, 1U, 2U);                    /* Set root clock to 800MHZ/ 2= 400MHZ */
-    CLOCK_SetRootMux(kCLOCK_RootAudioAhb, kCLOCK_AudioAhbRootmuxSysPll1); /* switch AUDIO AHB to SYSTEM PLL1 */
 
     //    CLOCK_SetRootDivider(kCLOCK_RootAxi, 1U, 2);
     //    CLOCK_SetRootMux(kCLOCK_RootAxi, kCLOCK_AxiRootmuxSysPll1); /* switch AXI to SYSTEM PLL1 800MHZ */

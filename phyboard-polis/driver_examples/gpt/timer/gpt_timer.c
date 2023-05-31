@@ -104,7 +104,7 @@ int main(void)
         /* Check whether occur interupt and toggle LED */
         if (true == gptIsrFlag)
         {
-            PRINTF("\r\n GPT interrupt is occurred !");
+            PRINTF("\r\n GPT interrupt occurred!");
             gptIsrFlag = false;
         }
         else
