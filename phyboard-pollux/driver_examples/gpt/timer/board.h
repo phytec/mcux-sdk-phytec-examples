@@ -1,5 +1,6 @@
 /*
  * Copyright 2019-2020 NXP
+ * Copyright 2023 PHYTEC Messtechnik GmbH
  * All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
@@ -9,13 +10,12 @@
 #define _BOARD_H_
 #include "clock_config.h"
 #include "fsl_clock.h"
-#include "fsl_audiomix.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
 /*! @brief The board name */
-#define BOARD_NAME        "MIMX8MP-EVK"
-#define MANUFACTURER_NAME "NXP"
+#define BOARD_NAME        "phyBOARD-Pollux"
+#define MANUFACTURER_NAME "PHYTEC"
 #define BOARD_DOMAIN_ID   (1U)
 /* The UART to use for debug messages. */
 #define BOARD_DEBUG_UART_TYPE     kSerialPort_Uart
