@@ -1,6 +1,7 @@
 /*
  * Copyright (c) 2015, Freescale Semiconductor, Inc.
  * Copyright 2016-2020 NXP
+ * Copyright 2023 PHYTEC Messtechnik GmbH
  * All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
@@ -15,8 +16,8 @@
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
-#define EXAMPLE_LED_GPIO     GPIO5
-#define EXAMPLE_LED_GPIO_PIN 11U
+#define EXAMPLE_LED_GPIO     GPIO4
+#define EXAMPLE_LED_GPIO_PIN 14U
 
 /*******************************************************************************
  * Prototypes
