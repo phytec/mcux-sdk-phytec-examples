@@ -1,5 +1,6 @@
 /*
  * Copyright 2019-2021 NXP
+ * Copyright 2023 PHYTEC Messtechnik GmbH
  * All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
@@ -43,10 +44,10 @@ void BOARD_InitBootPins(void)
 BOARD_InitPins:
 - options: {callFromInitBoot: 'true', coreID: cm7}
 - pin_list:
-  - {pin_num: AJ5, peripheral: UART4, signal: uart_rx, pin_signal: UART4_RXD, PE: Enabled, PUE: Weak_Pull_Up, DSE: X6}
-  - {pin_num: AH5, peripheral: UART4, signal: uart_tx, pin_signal: UART4_TXD, PE: Enabled, PUE: Weak_Pull_Up, DSE: X6}
-  - {pin_num: AJ7, peripheral: I2C3, signal: i2c_scl, pin_signal: I2C3_SCL, PE: Enabled, HYS: Schmitt, PUE: Weak_Pull_Up, FSEL: Fast, DSE: X6, SION: ENABLED}
-  - {pin_num: AJ6, peripheral: I2C3, signal: i2c_sda, pin_signal: I2C3_SDA, PE: Enabled, HYS: Schmitt, PUE: Weak_Pull_Up, FSEL: Fast, DSE: X6, SION: ENABLED}
+  - {pin_num: AH5, peripheral: UART4, signal: uart_rx, pin_signal: UART4_TXD, PE: Enabled, PUE: Weak_Pull_Up, DSE: X6}
+  - {pin_num: AJ5, peripheral: UART4, signal: uart_tx, pin_signal: UART4_RXD, PE: Enabled, PUE: Weak_Pull_Up, DSE: X6}
+  - {pin_num: AF8, peripheral: I2C4, signal: i2c_scl, pin_signal: I2C4_SCL, PE: Disabled, HYS: Schmitt, FSEL: Fast, DSE: X6, SION: ENABLED}
+  - {pin_num: AD8, peripheral: I2C4, signal: i2c_sda, pin_signal: I2C4_SDA, PE: Disabled, HYS: Schmitt, FSEL: Fast, DSE: X6, SION: ENABLED}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 
@@ -57,27 +58,23 @@ BOARD_InitPins:
  *
  * END ****************************************************************************************************************/
 void BOARD_InitPins(void) {                                /*!< Function assigned for the core: Cortex-M7F[m7] */
-    IOMUXC_SetPinMux(IOMUXC_I2C3_SCL_I2C3_SCL, 1U);
-    IOMUXC_SetPinConfig(IOMUXC_I2C3_SCL_I2C3_SCL, 
+    IOMUXC_SetPinMux(IOMUXC_I2C4_SCL_I2C4_SCL, 1U);
+    IOMUXC_SetPinConfig(IOMUXC_I2C4_SCL_I2C4_SCL,
+			IOMUXC_SW_PAD_CTL_PAD_DSE(3U) |
+                        IOMUXC_SW_PAD_CTL_PAD_FSEL_MASK |
+			IOMUXC_SW_PAD_CTL_PAD_HYS_MASK);
+    IOMUXC_SetPinMux(IOMUXC_I2C4_SDA_I2C4_SDA, 1U);
+    IOMUXC_SetPinConfig(IOMUXC_I2C4_SDA_I2C4_SDA,
                         IOMUXC_SW_PAD_CTL_PAD_DSE(3U) |
                         IOMUXC_SW_PAD_CTL_PAD_FSEL_MASK |
-                        IOMUXC_SW_PAD_CTL_PAD_PUE_MASK |
-                        IOMUXC_SW_PAD_CTL_PAD_HYS_MASK |
-                        IOMUXC_SW_PAD_CTL_PAD_PE_MASK);
-    IOMUXC_SetPinMux(IOMUXC_I2C3_SDA_I2C3_SDA, 1U);
-    IOMUXC_SetPinConfig(IOMUXC_I2C3_SDA_I2C3_SDA, 
-                        IOMUXC_SW_PAD_CTL_PAD_DSE(3U) |
-                        IOMUXC_SW_PAD_CTL_PAD_FSEL_MASK |
-                        IOMUXC_SW_PAD_CTL_PAD_PUE_MASK |
-                        IOMUXC_SW_PAD_CTL_PAD_HYS_MASK |
-                        IOMUXC_SW_PAD_CTL_PAD_PE_MASK);
-    IOMUXC_SetPinMux(IOMUXC_UART4_RXD_UART4_RX, 0U);
-    IOMUXC_SetPinConfig(IOMUXC_UART4_RXD_UART4_RX, 
+			IOMUXC_SW_PAD_CTL_PAD_HYS_MASK);
+    IOMUXC_SetPinMux(IOMUXC_UART4_RXD_UART4_TX, 0U);
+    IOMUXC_SetPinConfig(IOMUXC_UART4_RXD_UART4_TX,
                         IOMUXC_SW_PAD_CTL_PAD_DSE(3U) |
                         IOMUXC_SW_PAD_CTL_PAD_PUE_MASK |
                         IOMUXC_SW_PAD_CTL_PAD_PE_MASK);
-    IOMUXC_SetPinMux(IOMUXC_UART4_TXD_UART4_TX, 0U);
-    IOMUXC_SetPinConfig(IOMUXC_UART4_TXD_UART4_TX, 
+    IOMUXC_SetPinMux(IOMUXC_UART4_TXD_UART4_RX, 0U);
+    IOMUXC_SetPinConfig(IOMUXC_UART4_TXD_UART4_RX,
                         IOMUXC_SW_PAD_CTL_PAD_DSE(3U) |
                         IOMUXC_SW_PAD_CTL_PAD_PUE_MASK |
                         IOMUXC_SW_PAD_CTL_PAD_PE_MASK);

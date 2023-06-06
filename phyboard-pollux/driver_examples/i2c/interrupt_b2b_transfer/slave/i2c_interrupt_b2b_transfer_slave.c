@@ -1,6 +1,7 @@
 /*
  * Copyright (c) 2015, Freescale Semiconductor, Inc.
  * Copyright 2016-2017 NXP
+ * Copyright 2023 PHYTEC Messtechnik GmbH
  * All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
@@ -18,7 +19,7 @@
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
-#define EXAMPLE_I2C_SLAVE_BASEADDR I2C3
+#define EXAMPLE_I2C_SLAVE_BASEADDR I2C4
 
 #define I2C_MASTER_SLAVE_ADDR_7BIT 0x7EU
 #define I2C_DATA_LENGTH            32U
