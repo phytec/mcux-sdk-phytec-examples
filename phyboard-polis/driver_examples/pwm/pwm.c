@@ -1,6 +1,7 @@
 /*
  * Copyright (c) 2015, Freescale Semiconductor, Inc.
  * Copyright 2016-2017 NXP
+ * Copyright 2023 PHYTEC Messtechnik GmbH
  * All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
@@ -16,9 +17,9 @@
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
-#define DEMO_PWM_BASEADDR   PWM3
-#define DEMO_PWM_IRQn       PWM3_IRQn
-#define DEMO_PWM_IRQHandler PWM3_IRQHandler
+#define DEMO_PWM_BASEADDR   PWM4
+#define DEMO_PWM_IRQn       PWM4_IRQn
+#define DEMO_PWM_IRQHandler PWM4_IRQHandler
 /*! @brief PWM period value. PWMO (Hz) = PCLK(Hz) / (period +2) */
 #define PWM_PERIOD_VALUE 30
 

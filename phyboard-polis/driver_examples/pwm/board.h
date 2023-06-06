@@ -1,5 +1,6 @@
 /*
  * Copyright 2018-2021 NXP
+ * Copyright 2023 PHYTEC Messtechnik GmbH
  * All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
@@ -13,8 +14,8 @@
  * Definitions
  ******************************************************************************/
 /*! @brief The board name */
-#define BOARD_NAME        "MIMX8MM-EVK"
-#define MANUFACTURER_NAME "NXP"
+#define BOARD_NAME        "phyBOARD-Polis"
+#define MANUFACTURER_NAME "PHYTEC"
 #define BOARD_DOMAIN_ID   (1)
 /* The UART to use for debug messages. */
 #define BOARD_DEBUG_UART_TYPE     kSerialPort_Uart

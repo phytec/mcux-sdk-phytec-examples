@@ -1,5 +1,6 @@
 /*
  * Copyright 2018-2021 NXP
+ * Copyright 2023 PHYTEC Messtechnik GmbH
  * All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
@@ -45,7 +46,7 @@ BOARD_InitPins:
 - pin_list:
   - {pin_num: F19, peripheral: UART4, signal: uart_rx, pin_signal: UART4_RXD, PE: Disabled, PUE: Disabled, DSE: X6_0}
   - {pin_num: F18, peripheral: UART4, signal: uart_tx, pin_signal: UART4_TXD, PE: Disabled, PUE: Disabled, DSE: X6_0}
-  - {pin_num: AF9, peripheral: PWM3, signal: pwm_out, pin_signal: SPDIF_TX, PE: Disabled, DSE: X6_0}
+  - {pin_num: AF9, peripheral: PWM3, signal: pwm_out, pin_signal: GPIO_IO14, PE: Disabled, DSE: X6_0}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 
@@ -56,16 +57,16 @@ BOARD_InitPins:
  *
  * END ****************************************************************************************************************/
 void BOARD_InitPins(void) {                                /*!< Function assigned for the core: Cortex-M4[m4] */
-    IOMUXC_SetPinMux(IOMUXC_SPDIF_TX_PWM3_OUT, 0U);
-    IOMUXC_SetPinConfig(IOMUXC_SPDIF_TX_PWM3_OUT, 
+    IOMUXC_SetPinMux(IOMUXC_GPIO1_IO15_PWM4_OUT, 0U);
+    IOMUXC_SetPinConfig(IOMUXC_GPIO1_IO15_PWM4_OUT,
                         IOMUXC_SW_PAD_CTL_PAD_DSE(6U) |
                         IOMUXC_SW_PAD_CTL_PAD_FSEL(2U));
     IOMUXC_SetPinMux(IOMUXC_UART4_RXD_UART4_RX, 0U);
-    IOMUXC_SetPinConfig(IOMUXC_UART4_RXD_UART4_RX, 
+    IOMUXC_SetPinConfig(IOMUXC_UART4_RXD_UART4_RX,
                         IOMUXC_SW_PAD_CTL_PAD_DSE(6U) |
                         IOMUXC_SW_PAD_CTL_PAD_FSEL(2U));
     IOMUXC_SetPinMux(IOMUXC_UART4_TXD_UART4_TX, 0U);
-    IOMUXC_SetPinConfig(IOMUXC_UART4_TXD_UART4_TX, 
+    IOMUXC_SetPinConfig(IOMUXC_UART4_TXD_UART4_TX,
                         IOMUXC_SW_PAD_CTL_PAD_DSE(6U) |
                         IOMUXC_SW_PAD_CTL_PAD_FSEL(2U));
 }
