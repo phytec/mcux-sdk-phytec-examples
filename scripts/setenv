@@ -1,0 +1,15 @@
+#!/bin/bash
+if [ "$0" = "$BASH_SOURCE" ]; then
+	echo "Error: This script needs to be sourced. Please run as 'source $BASH_SOURCE'" >&2
+	exit 1
+fi
+
+export ARMGCC_DIR=/usr/
+echo "Set ARMGCC_DIR to $ARMGCC_DIR"
+
+if [[ $# -eq 1 ]]; then
+	export MCUX_SDK_PATH=$1    # i.e. ~/development/nxp/mcux-sdk-west/core/
+	echo "Set MCUX_SDK_PATH to: $MCUX_SDK_PATH"
+else
+	echo "MCUX_SDK_PATH not set, relying on default"
+fi
