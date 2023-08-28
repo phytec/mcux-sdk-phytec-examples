@@ -12,6 +12,7 @@
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
+/* Fractional PLLs: Fout = ((mainDiv+dsm/65536) * refSel) / (preDiv * 2^ postDiv) */
 /* Integer PLLs: Fout = (mainDiv * refSel) / (preDiv * 2^ postDiv) */
 /* SYSTEM PLL1 configuration */
 const ccm_analog_integer_pll_config_t g_sysPll1Config = {

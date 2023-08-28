@@ -64,7 +64,7 @@ void BOARD_BootClockRUN(void)
 
     CLOCK_SetRootDivider(kCLOCK_RootM7, 1U, 1U);              /* Set root clock to 800M */
     CLOCK_SetRootMux(kCLOCK_RootM7, kCLOCK_M7RootmuxSysPll1); /* switch cortex-m7 to SYSTEM PLL1 */
-    
+
     // CLOCK_SetRootDivider(kCLOCK_RootQspi, 1U, 2U);              /* Set root clock to 800M */
     // CLOCK_SetRootMux(kCLOCK_RootM7, kCLOCK_M7RootmuxSysPll1); /* switch QSPI to SYSTEM PLL1 */
 
@@ -76,7 +76,7 @@ void BOARD_BootClockRUN(void)
 
     CLOCK_EnableClock(kCLOCK_Rdc);   /* Enable RDC clock */
     CLOCK_EnableClock(kCLOCK_Ocram); /* Enable Ocram clock */
-    
+
     /* The purpose to enable the following modules clock is to make sure the M7 core could work normally when A53 core
      * enters the low power status.*/
     CLOCK_EnableClock(kCLOCK_Sim_m);

@@ -9,14 +9,14 @@
 #ifndef _BOARD_H_
 #define _BOARD_H_
 #include "clock_config.h"
-#include "fsl_clock.h"
 #include "fsl_audiomix.h"
+#include "fsl_clock.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
 /*! @brief The board name */
 #define BOARD_NAME        "phyBOARD-Pollux"
-#define MANUFACTURER_NAME "Phytec"
+#define MANUFACTURER_NAME "PHYTEC"
 #define BOARD_DOMAIN_ID   (1U)
 /* The UART to use for debug messages. */
 #define BOARD_DEBUG_UART_TYPE     kSerialPort_Uart

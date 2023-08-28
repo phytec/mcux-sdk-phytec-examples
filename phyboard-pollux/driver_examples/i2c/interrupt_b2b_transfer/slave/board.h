@@ -15,7 +15,7 @@
  ******************************************************************************/
 /*! @brief The board name */
 #define BOARD_NAME        "phyBOARD-Pollux"
-#define MANUFACTURER_NAME "Phytec"
+#define MANUFACTURER_NAME "PHYTEC"
 #define BOARD_DOMAIN_ID   (1U)
 /* The UART to use for debug messages. */
 #define BOARD_DEBUG_UART_TYPE     kSerialPort_Uart

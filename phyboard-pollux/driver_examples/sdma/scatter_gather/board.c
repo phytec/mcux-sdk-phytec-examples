@@ -1,5 +1,6 @@
 /*
  * Copyright 2019-2020 NXP
+ * Copyright 2023 PHYTEC Messtechnik GmbH
  * All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
