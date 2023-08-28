@@ -65,8 +65,8 @@ echo "===== Add options to build_*.sh ====="
 
 files=$(find . -path "*armgcc/build_*.sh") # exclude scripts folder
 for filename in ${files}; do
-	if ! grep -m 1 -q "${MCUX_PATH_ENV_VAR}" "${filename}"; then
-		replace_str=$(rg -o -I -N '(\.\.)?/\.\.(/\.\.)+' ${filename} | uniq)
+	if ! grep --max-count=1 --quiet "${MCUX_PATH_ENV_VAR}" "${filename}"; then
+		replace_str=$(grep --only-matching --perl-regexp '(\.\.)?/\.\.(/\.\.)+' ${filename} | uniq)
 		if [ -n "${replace_str}" ]; then
 			print_verb "Replace SDK path in ${filename}"
 			sed -i '/^cmake.* -DCMAKE_TOOLCHAIN_FILE.*/i\
@@ -92,8 +92,8 @@ echo "===== Add options to CMakeLists ====="
 files=$(find . -path "*/CMakeLists.txt")
 
 for filename in ${files}; do
-	if ! grep -m 1 -q "${MCUX_PATH_ENV_VAR}" "${filename}"; then
-	replace_str=$(rg -o -I -N '(\.\.)?/\.\.(/\.\.)+' ${filename} | uniq | sed 's/\//\\\//g')
+	if ! grep --max-count=1 --quiet "${MCUX_PATH_ENV_VAR}" "${filename}"; then
+		replace_str=$(grep --only-matching --perl-regexp '(\.\.)?/\.\.(/\.\.)+' ${filename} | uniq | sed 's/\//\\\//g')
 		if [ -n "${replace_str}" ]; then
 			print_verb "Replace SDK path in ${filename}"
 			sed -i 's/SET(SdkRootDirPath ${ProjDirPath}'${replace_str}')/if ((DEFINED ENV{'${MCUX_PATH_ENV_VAR}'}) AND (NOT ("$ENV{'${MCUX_PATH_ENV_VAR}'}" STREQUAL "")))\
