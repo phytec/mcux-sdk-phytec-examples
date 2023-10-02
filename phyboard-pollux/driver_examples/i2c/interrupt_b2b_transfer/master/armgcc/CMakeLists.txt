@@ -29,14 +29,18 @@ set(MCUX_BUILD_TYPES debug release ddr_debug ddr_release flash_debug flash_relea
 set(MCUX_SDK_PROJECT_NAME ii2c_interrupt_b2b_transfer_master.elf)
 
 if (NOT DEFINED SdkRootDirPath)
-    SET(SdkRootDirPath ${ProjDirPath}/../../../../../../..)
+    if ((DEFINED ENV{MCUX_SDK_PATH}) AND (NOT ("$ENV{MCUX_SDK_PATH}" STREQUAL "")))
+        SET(SdkRootDirPath $ENV{MCUX_SDK_PATH})
+    else()
+        SET(SdkRootDirPath ${ProjDirPath}/../../../../../../..)
+    endif()
 endif()
 
 include(${ProjDirPath}/flags.cmake)
 
 include(${ProjDirPath}/config.cmake)
 
-add_executable(${MCUX_SDK_PROJECT_NAME} 
+add_executable(${MCUX_SDK_PROJECT_NAME}
 "${ProjDirPath}/../i2c_interrupt_b2b_transfer_master.c"
 "${ProjDirPath}/../pin_mux.c"
 "${ProjDirPath}/../pin_mux.h"
@@ -53,50 +57,65 @@ target_include_directories(${MCUX_SDK_PROJECT_NAME} PUBLIC
 )
 
 set(CMAKE_MODULE_PATH
-    ${SdkRootDirPath}/devices/MIMX8ML8/utilities
-    ${SdkRootDirPath}/devices/MIMX8ML8/utilities/debug_console_lite
-    ${SdkRootDirPath}/devices/MIMX8ML8/drivers
-    ${SdkRootDirPath}/devices/MIMX8ML8
-    ${SdkRootDirPath}/components/uart
-    ${SdkRootDirPath}/components/lists
-    ${SdkRootDirPath}/CMSIS/Core/Include
+    ${SdkRootDirPath}/core/drivers/common
+    ${SdkRootDirPath}/core/drivers/ecspi
+    ${SdkRootDirPath}/core/drivers/flexcan
+    ${SdkRootDirPath}/core/drivers/gpt
+    ${SdkRootDirPath}/core/drivers/igpio
+    ${SdkRootDirPath}/core/drivers/ii2c
+    ${SdkRootDirPath}/core/drivers/ipwm
+    ${SdkRootDirPath}/core/drivers/iuart
+    ${SdkRootDirPath}/core/drivers/mu
+    ${SdkRootDirPath}/core/drivers/rdc
+    ${SdkRootDirPath}/core/drivers/sdma
+    ${SdkRootDirPath}/core/drivers/tmu_1
+    ${SdkRootDirPath}/core/drivers/tmu_2
+    ${SdkRootDirPath}/core/drivers/wdog01
+    ${SdkRootDirPath}/core/utilities/assert
+    ${SdkRootDirPath}/core/utilities
+    ${SdkRootDirPath}/core/utilities/misc_utilities
+    ${SdkRootDirPath}/core/devices/MIMX8ML8/drivers
+    ${SdkRootDirPath}/core/devices/MIMX8ML8
+    ${SdkRootDirPath}/core/components/uart
+    ${SdkRootDirPath}/core/components/lists
+    ${SdkRootDirPath}/core/CMSIS/Core/Include
 )
 
 # include modules
-include(utility_debug_console_lite_MIMX8ML8)
+include(utility_debug_console_lite)
 
-include(utility_assert_lite_MIMX8ML8)
+include(utility_assert_lite)
 
-include(driver_ii2c_MIMX8ML8)
+include(driver_ii2c)
 
-include(driver_clock_MIMX8ML8)
+include(driver_clock)
 
-include(driver_common_MIMX8ML8)
+include(driver_common)
 
-include(driver_rdc_MIMX8ML8)
+include(driver_rdc)
 
-include(driver_audiomix_MIMX8ML8)
+include(driver_audiomix)
 
-include(device_MIMX8ML8_CMSIS_MIMX8ML8)
+include(device_CMSIS)
 
-include(component_iuart_adapter_MIMX8ML8)
+include(component_iuart_adapter)
 
-include(component_lists_MIMX8ML8)
+include(component_lists)
 
-include(driver_iuart_MIMX8ML8)
+include(driver_iuart)
 
-include(device_MIMX8ML8_startup_MIMX8ML8)
+include(device_startup)
 
-include(CMSIS_Include_core_cm_MIMX8ML8)
+include(CMSIS_Include_core_cm)
 
 include(utilities_misc_utilities_MIMX8ML8)
 
-include(device_MIMX8ML8_system_MIMX8ML8)
+include(device_system)
 
 
-IF(NOT DEFINED TARGET_LINK_SYSTEM_LIBRARIES)  
-    SET(TARGET_LINK_SYSTEM_LIBRARIES "-lm -lc -lgcc -lnosys")  
-ENDIF()  
+IF(NOT DEFINED TARGET_LINK_SYSTEM_LIBRARIES)
+    SET(TARGET_LINK_SYSTEM_LIBRARIES "-lm -lc -lgcc -lnosys")
+ENDIF()
 
 TARGET_LINK_LIBRARIES(${MCUX_SDK_PROJECT_NAME} PRIVATE -Wl,--start-group)
 
