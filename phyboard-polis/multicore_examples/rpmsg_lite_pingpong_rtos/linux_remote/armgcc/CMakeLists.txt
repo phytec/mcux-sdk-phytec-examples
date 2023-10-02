@@ -29,14 +29,18 @@ set(MCUX_BUILD_TYPES debug release ddr_debug ddr_release flash_debug flash_relea
 set(MCUX_SDK_PROJECT_NAME rpmsg_lite_pingpong_rtos_linux_remote.elf)
 
 if (NOT DEFINED SdkRootDirPath)
-    SET(SdkRootDirPath ${ProjDirPath}/../../../../../..)
+    if ((DEFINED ENV{MCUX_SDK_PATH}) AND (NOT ("$ENV{MCUX_SDK_PATH}" STREQUAL "")))
+        SET(SdkRootDirPath $ENV{MCUX_SDK_PATH})
+    else()
+        SET(SdkRootDirPath ${ProjDirPath}/../../../../../..)
+    endif()
 endif()
 
 include(${ProjDirPath}/flags.cmake)
 
 include(${ProjDirPath}/config.cmake)
 
-add_executable(${MCUX_SDK_PROJECT_NAME} 
+add_executable(${MCUX_SDK_PROJECT_NAME}
 "${ProjDirPath}/../main_remote.c"
 "${ProjDirPath}/../FreeRTOSConfig.h"
 "${ProjDirPath}/../pin_mux.c"
@@ -57,66 +61,82 @@ target_include_directories(${MCUX_SDK_PROJECT_NAME} PUBLIC
 )
 
 set(CMAKE_MODULE_PATH
+    ${SdkRootDirPath}/core/drivers/common
+    ${SdkRootDirPath}/core/drivers/ecspi
+    ${SdkRootDirPath}/core/drivers/flexcan
+    ${SdkRootDirPath}/core/drivers/gpt
+    ${SdkRootDirPath}/core/drivers/igpio
+    ${SdkRootDirPath}/core/drivers/ii2c
+    ${SdkRootDirPath}/core/drivers/ipwm
+    ${SdkRootDirPath}/core/drivers/iuart
+    ${SdkRootDirPath}/core/drivers/mu
+    ${SdkRootDirPath}/core/drivers/rdc
+    ${SdkRootDirPath}/core/drivers/sdma
+    ${SdkRootDirPath}/core/drivers/tmu_1
+    ${SdkRootDirPath}/core/drivers/tmu_2
+    ${SdkRootDirPath}/core/drivers/wdog01
+    ${SdkRootDirPath}/core/utilities/assert
     ${SdkRootDirPath}/middleware/multicore
     ${SdkRootDirPath}/rtos/freertos/freertos-kernel
-    ${SdkRootDirPath}/devices/MIMX8MM6/drivers
-    ${SdkRootDirPath}/devices/MIMX8MM6
-    ${SdkRootDirPath}/devices/MIMX8MM6/utilities
-    ${SdkRootDirPath}/components/uart
-    ${SdkRootDirPath}/components/serial_manager
-    ${SdkRootDirPath}/components/lists
-    ${SdkRootDirPath}/CMSIS/Core/Include
+    ${SdkRootDirPath}/core/devices/MIMX8MM6/drivers
+    ${SdkRootDirPath}/core/devices/MIMX8MM6
+    ${SdkRootDirPath}/core/utilities
+    ${SdkRootDirPath}/core/utilities/misc_utilities
+    ${SdkRootDirPath}/core/components/uart
+    ${SdkRootDirPath}/core/components/serial_manager
+    ${SdkRootDirPath}/core/components/lists
+    ${SdkRootDirPath}/core/CMSIS/Core/Include
 )
 
 # include modules
-include(middleware_multicore_rpmsg_lite_imx8mm_m4_freertos_MIMX8MM6)
+include(middleware_multicore_rpmsg_lite_imx8mm_m4_freertos)
 
-include(middleware_multicore_rpmsg_lite_MIMX8MM6)
+include(middleware_multicore_rpmsg_lite)
 
-include(middleware_multicore_rpmsg_lite_freertos_MIMX8MM6)
+include(middleware_multicore_rpmsg_lite_freertos)
 
-include(middleware_freertos-kernel_heap_4_MIMX8MM6)
+include(middleware_freertos-kernel_heap_4)
 
-include(driver_clock_MIMX8MM6)
+include(driver_clock)
 
-include(driver_mu_MIMX8MM6)
+include(driver_mu)
 
 include(middleware_freertos-kernel_MIMX8MM6)
 
-include(driver_common_MIMX8MM6)
+include(driver_common)
 
-include(driver_rdc_MIMX8MM6)
+include(driver_rdc)
 
-include(device_MIMX8MM6_CMSIS_MIMX8MM6)
+include(device_CMSIS)
 
-include(utility_debug_console_MIMX8MM6)
+include(utility_debug_console)
 
-include(component_iuart_adapter_MIMX8MM6)
+include(component_iuart_adapter)
 
-include(component_serial_manager_MIMX8MM6)
+include(component_serial_manager)
 
-include(component_lists_MIMX8MM6)
+include(component_lists)
 
-include(component_serial_manager_uart_MIMX8MM6)
+include(component_serial_manager_uart)
 
-include(driver_iuart_MIMX8MM6)
+include(driver_iuart)
 
-include(device_MIMX8MM6_startup_MIMX8MM6)
+include(device_startup)
 
-include(utility_assert_MIMX8MM6)
+include(utility_assert)
 
-include(middleware_freertos-kernel_extension_MIMX8MM6)
+include(middleware_freertos-kernel_extension)
 
-include(CMSIS_Include_core_cm_MIMX8MM6)
+include(CMSIS_Include_core_cm)
 
 include(utilities_misc_utilities_MIMX8MM6)
 
-include(device_MIMX8MM6_system_MIMX8MM6)
+include(device_system)
 
 
-IF(NOT DEFINED TARGET_LINK_SYSTEM_LIBRARIES)  
-    SET(TARGET_LINK_SYSTEM_LIBRARIES "-lm -lc -lgcc -lnosys")  
-ENDIF()  
+IF(NOT DEFINED TARGET_LINK_SYSTEM_LIBRARIES)
+    SET(TARGET_LINK_SYSTEM_LIBRARIES "-lm -lc -lgcc -lnosys")
+ENDIF()
 
 TARGET_LINK_LIBRARIES(${MCUX_SDK_PROJECT_NAME} PRIVATE -Wl,--start-group)
 
