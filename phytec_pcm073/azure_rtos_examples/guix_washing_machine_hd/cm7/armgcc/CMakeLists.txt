@@ -56,7 +56,7 @@ include(${ProjDirPath}/flags.cmake)
 
 include(${ProjDirPath}/config.cmake)
 
-add_executable(${MCUX_SDK_PROJECT_NAME} 
+add_executable(${MCUX_SDK_PROJECT_NAME}
 "${ProjDirPath}/../display_support.h"
 "${ProjDirPath}/../display_support.c"
 "${ProjDirPath}/../pin_mux.c"
@@ -217,9 +217,9 @@ add_subdirectory(${SdkRootDirPath}/rtos/azure-rtos/threadx ./CMakeFiles/libthrea
 
 add_subdirectory(${SdkRootDirPath}/rtos/azure-rtos/guix ./CMakeFiles/libguix)
 
-IF(NOT DEFINED TARGET_LINK_SYSTEM_LIBRARIES)  
-    SET(TARGET_LINK_SYSTEM_LIBRARIES "-lm -lc -lgcc -lnosys")  
-ENDIF()  
+IF(NOT DEFINED TARGET_LINK_SYSTEM_LIBRARIES)
+    SET(TARGET_LINK_SYSTEM_LIBRARIES "-lm -lc -lgcc -lnosys")
+ENDIF()
 
 TARGET_LINK_LIBRARIES(${MCUX_SDK_PROJECT_NAME} PRIVATE -Wl,--start-group)
 
