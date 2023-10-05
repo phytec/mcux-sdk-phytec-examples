@@ -42,7 +42,7 @@ include(${ProjDirPath}/flags.cmake)
 
 include(${ProjDirPath}/config.cmake)
 
-add_executable(${MCUX_SDK_PROJECT_NAME} 
+add_executable(${MCUX_SDK_PROJECT_NAME}
 "${SdkRootDirPath}/middleware/eiq/mpp/examples/camera_view/camera_view.c"
 "${SdkRootDirPath}/middleware/eiq/mpp/examples/camera_view/mpp_config.h"
 "${SdkRootDirPath}/middleware/eiq/mpp/boards/evkmimxrt1170/inc/board_config.h"
@@ -228,9 +228,9 @@ include(utilities_misc_utilities_MIMXRT1176_cm7)
 include(device_system_MIMXRT1176_cm7)
 
 
-IF(NOT DEFINED TARGET_LINK_SYSTEM_LIBRARIES)  
-    SET(TARGET_LINK_SYSTEM_LIBRARIES "-lm -lc -lgcc -lnosys")  
-ENDIF()  
+IF(NOT DEFINED TARGET_LINK_SYSTEM_LIBRARIES)
+    SET(TARGET_LINK_SYSTEM_LIBRARIES "-lm -lc -lgcc -lnosys")
+ENDIF()
 
 TARGET_LINK_LIBRARIES(${MCUX_SDK_PROJECT_NAME} PRIVATE -Wl,--start-group)
 

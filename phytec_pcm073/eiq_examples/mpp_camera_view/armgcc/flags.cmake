@@ -1,14 +1,14 @@
-IF(NOT DEFINED FPU)  
-    SET(FPU "-mfloat-abi=hard -mfpu=fpv5-d16")  
-ENDIF()  
+IF(NOT DEFINED FPU)
+    SET(FPU "-mfloat-abi=hard -mfpu=fpv5-d16")
+ENDIF()
 
-IF(NOT DEFINED SPECS)  
-    SET(SPECS "--specs=nano.specs --specs=nosys.specs")  
-ENDIF()  
+IF(NOT DEFINED SPECS)
+    SET(SPECS "--specs=nano.specs --specs=nosys.specs")
+ENDIF()
 
-IF(NOT DEFINED DEBUG_CONSOLE_CONFIG)  
-    SET(DEBUG_CONSOLE_CONFIG "-DSDK_DEBUGCONSOLE_UART")  
-ENDIF()  
+IF(NOT DEFINED DEBUG_CONSOLE_CONFIG)
+    SET(DEBUG_CONSOLE_CONFIG "-DSDK_DEBUGCONSOLE_UART")
+ENDIF()
 
 SET(CMAKE_ASM_FLAGS_FLEXSPI_NOR_SDRAM_DEBUG " \
     ${CMAKE_ASM_FLAGS_FLEXSPI_NOR_SDRAM_DEBUG} \
@@ -189,7 +189,7 @@ SET(CMAKE_EXE_LINKER_FLAGS_FLEXSPI_NOR_SDRAM_DEBUG " \
     --defsym=__heap_size__=0x80000 \
     ${FPU} \
     ${SPECS} \
-    -T${ProjDirPath}/../../../../../middleware/eiq/mpp/boards/evkmimxrt1170/MIMXRT1176xxxxx_cm7_flexspi_nor_sdram.ld -static \
+	-T${SdkRootDirPath}/middleware/eiq/mpp/boards/evkmimxrt1170/MIMXRT1176xxxxx_cm7_flexspi_nor_sdram.ld -static \
 ")
 SET(CMAKE_EXE_LINKER_FLAGS_FLEXSPI_NOR_SDRAM_RELEASE " \
     ${CMAKE_EXE_LINKER_FLAGS_FLEXSPI_NOR_SDRAM_RELEASE} \
@@ -219,5 +219,5 @@ SET(CMAKE_EXE_LINKER_FLAGS_FLEXSPI_NOR_SDRAM_RELEASE " \
     --defsym=__heap_size__=0x80000 \
     ${FPU} \
     ${SPECS} \
-    -T${ProjDirPath}/../../../../../middleware/eiq/mpp/boards/evkmimxrt1170/MIMXRT1176xxxxx_cm7_flexspi_nor_sdram.ld -static \
+	-T${SdkRootDirPath}/middleware/eiq/mpp/boards/evkmimxrt1170/MIMXRT1176xxxxx_cm7_flexspi_nor_sdram.ld -static \
 ")
