@@ -42,18 +42,15 @@ include(${ProjDirPath}/flags.cmake)
 
 include(${ProjDirPath}/config.cmake)
 
-add_executable(${MCUX_SDK_PROJECT_NAME} 
+add_executable(${MCUX_SDK_PROJECT_NAME}
 "${ProjDirPath}/../lwip_iperf_bm.c"
 "${ProjDirPath}/../lwipopts.h"
+"${ProjDirPath}/../fsl_phydp83867ir.c"
 "${ProjDirPath}/../pin_mux.c"
-"${ProjDirPath}/../pin_mux.h"
 "${SdkRootDirPath}/core/boards/evkmimxrt1170/board.c"
-"${SdkRootDirPath}/core/boards/evkmimxrt1170/board.h"
 "${SdkRootDirPath}/core/boards/evkmimxrt1170/clock_config.c"
-"${SdkRootDirPath}/core/boards/evkmimxrt1170/clock_config.h"
 "${SdkRootDirPath}/core/boards/evkmimxrt1170/dcd.c"
-"${SdkRootDirPath}/core/boards/evkmimxrt1170/dcd.h"
-"${ProjDirPath}/../evkmimxrt1170_connect_cm4_cm7side.jlinkscript"
+"${ProjDirPath}/../phytec_pcm073_connect_cm4_cm7side.jlinkscript"
 )
 
 target_include_directories(${MCUX_SDK_PROJECT_NAME} PUBLIC
@@ -97,11 +94,11 @@ include(middleware_lwip_enet_ethernetif_MIMXRT1176_cm7)
 
 include(middleware_lwip)
 
-include(driver_phy-common_MIMXRT1176_cm7)
+include(driver_phy-common)
 
 include(driver_enet)
 
-include(component_silicon_id_MIMXRT1176_cm7)
+include(component_silicon_id)
 
 include(driver_common)
 
@@ -158,9 +155,9 @@ include(utilities_misc_utilities_MIMXRT1176_cm7)
 include(device_system_MIMXRT1176_cm7)
 
 
-IF(NOT DEFINED TARGET_LINK_SYSTEM_LIBRARIES)  
-    SET(TARGET_LINK_SYSTEM_LIBRARIES "-lm -lc -lgcc -lnosys")  
-ENDIF()  
+IF(NOT DEFINED TARGET_LINK_SYSTEM_LIBRARIES)
+    SET(TARGET_LINK_SYSTEM_LIBRARIES "-lm -lc -lgcc -lnosys")
+ENDIF()
 
 TARGET_LINK_LIBRARIES(${MCUX_SDK_PROJECT_NAME} PRIVATE -Wl,--start-group)
 
