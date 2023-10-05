@@ -42,7 +42,7 @@ include(${ProjDirPath}/flags.cmake)
 
 include(${ProjDirPath}/config.cmake)
 
-add_executable(${MCUX_SDK_PROJECT_NAME} 
+add_executable(${MCUX_SDK_PROJECT_NAME}
 "${ProjDirPath}/../sdcard_fatfs.c"
 "${ProjDirPath}/../ffconf.h"
 "${ProjDirPath}/../pin_mux.c"
@@ -55,7 +55,7 @@ add_executable(${MCUX_SDK_PROJECT_NAME}
 "${SdkRootDirPath}/core/boards/evkmimxrt1170/clock_config.h"
 "${SdkRootDirPath}/core/boards/evkmimxrt1170/dcd.c"
 "${SdkRootDirPath}/core/boards/evkmimxrt1170/dcd.h"
-"${ProjDirPath}/../evkmimxrt1170_connect_cm4_cm7side.jlinkscript"
+"${ProjDirPath}/../phytec_pcm073_connect_cm4_cm7side.jlinkscript"
 )
 
 target_include_directories(${MCUX_SDK_PROJECT_NAME} PUBLIC
@@ -94,7 +94,7 @@ include(middleware_sdmmc_common)
 
 include(middleware_sdmmc_host_usdhc)
 
-include(middleware_sdmmc_host_usdhc_interrupt_MIMXRT1176_cm7)
+include(middleware_sdmmc_host_usdhc_interrupt)
 
 include(utility_debug_console_lite)
 
@@ -102,7 +102,7 @@ include(utility_assert_lite)
 
 include(component_igpio_adapter)
 
-include(middleware_fatfs_MIMXRT1176_cm7)
+include(middleware_fatfs)
 
 include(middleware_fatfs_sd)
 
@@ -149,9 +149,9 @@ include(utilities_misc_utilities_MIMXRT1176_cm7)
 include(device_system_MIMXRT1176_cm7)
 
 
-IF(NOT DEFINED TARGET_LINK_SYSTEM_LIBRARIES)  
-    SET(TARGET_LINK_SYSTEM_LIBRARIES "-lm -lc -lgcc -lnosys")  
-ENDIF()  
+IF(NOT DEFINED TARGET_LINK_SYSTEM_LIBRARIES)
+    SET(TARGET_LINK_SYSTEM_LIBRARIES "-lm -lc -lgcc -lnosys")
+ENDIF()
 
 TARGET_LINK_LIBRARIES(${MCUX_SDK_PROJECT_NAME} PRIVATE -Wl,--start-group)
 
