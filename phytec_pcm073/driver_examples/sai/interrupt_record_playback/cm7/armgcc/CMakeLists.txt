@@ -42,7 +42,7 @@ include(${ProjDirPath}/flags.cmake)
 
 include(${ProjDirPath}/config.cmake)
 
-add_executable(${MCUX_SDK_PROJECT_NAME} 
+add_executable(${MCUX_SDK_PROJECT_NAME}
 "${ProjDirPath}/../sai_interrupt_record_playback.c"
 "${ProjDirPath}/../pin_mux.c"
 "${ProjDirPath}/../pin_mux.h"
@@ -52,7 +52,7 @@ add_executable(${MCUX_SDK_PROJECT_NAME}
 "${SdkRootDirPath}/core/boards/evkmimxrt1170/clock_config.h"
 "${SdkRootDirPath}/core/boards/evkmimxrt1170/dcd.c"
 "${SdkRootDirPath}/core/boards/evkmimxrt1170/dcd.h"
-"${ProjDirPath}/../evkmimxrt1170_connect_cm4_cm7side.jlinkscript"
+"${ProjDirPath}/../phytec_pcm073_connect_cm4_cm7side.jlinkscript"
 )
 
 target_include_directories(${MCUX_SDK_PROJECT_NAME} PUBLIC
@@ -62,8 +62,8 @@ target_include_directories(${MCUX_SDK_PROJECT_NAME} PUBLIC
 
 set(CMAKE_MODULE_PATH
     ${SdkRootDirPath}/core/drivers/lpi2c
-    ${SdkRootDirPath}/core/components/codec/wm8960
     ${SdkRootDirPath}/core/components/codec
+    ${SdkRootDirPath}/core/components/codec/tlv320aic3110
     ${SdkRootDirPath}/core/drivers/common
     ${SdkRootDirPath}/core/components/codec/
     ${SdkRootDirPath}/core/components/codec/i2c
@@ -87,17 +87,11 @@ set(CMAKE_MODULE_PATH
 # include modules
 include(driver_lpi2c)
 
-include(driver_wm8960)
-
 include(driver_codec)
 
 include(driver_common)
 
 include(component_tlv320aic3110_adapter)
-
-include(component_codec_i2c_MIMXRT1176_cm7)
-
-include(component_lpi2c_adapter)
 
 include(utility_debug_console_lite)
 
@@ -140,9 +134,9 @@ include(utilities_misc_utilities_MIMXRT1176_cm7)
 include(device_system_MIMXRT1176_cm7)
 
 
-IF(NOT DEFINED TARGET_LINK_SYSTEM_LIBRARIES)  
-    SET(TARGET_LINK_SYSTEM_LIBRARIES "-lm -lc -lgcc -lnosys")  
-ENDIF()  
+IF(NOT DEFINED TARGET_LINK_SYSTEM_LIBRARIES)
+    SET(TARGET_LINK_SYSTEM_LIBRARIES "-lm -lc -lgcc -lnosys")
+ENDIF()
 
 TARGET_LINK_LIBRARIES(${MCUX_SDK_PROJECT_NAME} PRIVATE -Wl,--start-group)
 
