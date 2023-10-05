@@ -4,13 +4,10 @@ CMakeFiles/
 Makefile
 *.log
 *.patch
-ddr_debug/
-ddr_release/
-debug/
-flash_debug/
-flash_release/
+*.elf
+*debug
+*release
 output.map
-release/
 build_log.txt
 output.map
 compile_commands.json
