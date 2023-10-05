@@ -29,14 +29,18 @@ set(MCUX_BUILD_TYPES debug release sdram_debug sdram_release flexspi_nor_debug f
 set(MCUX_SDK_PROJECT_NAME lpi2c_eeprom_cm7.elf)
 
 if (NOT DEFINED SdkRootDirPath)
-    SET(SdkRootDirPath ${ProjDirPath}/../../../../../../../..)
+    if ((DEFINED ENV{MCUX_SDK_PATH}) AND (NOT ("$ENV{MCUX_SDK_PATH}" STREQUAL "")))
+        SET(SdkRootDirPath $ENV{MCUX_SDK_PATH})
+    else()
+        SET(SdkRootDirPath ${ProjDirPath}/../../../../../../..)
+    endif()
 endif()
 
 include(${ProjDirPath}/flags.cmake)
 
 include(${ProjDirPath}/config.cmake)
 
-add_executable(${MCUX_SDK_PROJECT_NAME} 
+add_executable(${MCUX_SDK_PROJECT_NAME}
 "${ProjDirPath}/../lpi2c_eeprom.c"
 "${ProjDirPath}/../pin_mux.c"
 "${ProjDirPath}/../pin_mux.h"
@@ -46,7 +50,7 @@ add_executable(${MCUX_SDK_PROJECT_NAME}
 "${ProjDirPath}/../clock_config.h"
 "${ProjDirPath}/../dcd.c"
 "${ProjDirPath}/../dcd.h"
-"${ProjDirPath}/../evkmimxrt1170_connect_cm4_cm7side.jlinkscript"
+"${ProjDirPath}/../phytec_pcm073_connect_cm4_cm7side.jlinkscript"
 )
 
 target_include_directories(${MCUX_SDK_PROJECT_NAME} PUBLIC
@@ -54,65 +58,70 @@ target_include_directories(${MCUX_SDK_PROJECT_NAME} PUBLIC
 )
 
 set(CMAKE_MODULE_PATH
-    ${SdkRootDirPath}/devices/MIMXRT1176/utilities
-    ${SdkRootDirPath}/devices/MIMXRT1176/utilities/debug_console_lite
-    ${SdkRootDirPath}/devices/MIMXRT1176/drivers
-    ${SdkRootDirPath}/devices/MIMXRT1176
-    ${SdkRootDirPath}/components/uart
-    ${SdkRootDirPath}/components/lists
-    ${SdkRootDirPath}/devices/MIMXRT1176/xip
-    ${SdkRootDirPath}/boards/evkmimxrt1170/xip
-    ${SdkRootDirPath}/devices/MIMXRT1176/drivers/cm7
-    ${SdkRootDirPath}/CMSIS/Core/Include
+    ${SdkRootDirPath}/core/drivers/common
+    ${SdkRootDirPath}/core/drivers/lpi2c
+    ${SdkRootDirPath}/core/drivers/lpuart
+    ${SdkRootDirPath}/core/drivers/igpio
+    ${SdkRootDirPath}/core/utilities
+    ${SdkRootDirPath}/core/utilities/misc_utilities
+    ${SdkRootDirPath}/core/utilities/assert
+    ${SdkRootDirPath}/core/devices/MIMXRT1176/drivers
+    ${SdkRootDirPath}/core/devices/MIMXRT1176
+    ${SdkRootDirPath}/core/components/uart
+    ${SdkRootDirPath}/core/components/lists
+    ${SdkRootDirPath}/core/devices/MIMXRT1176/xip
+    ${SdkRootDirPath}/core/boards/evkmimxrt1170/xip
+    ${SdkRootDirPath}/core/devices/MIMXRT1176/drivers/cm7
+    ${SdkRootDirPath}/core/CMSIS/Core/Include
 )
 
 # include modules
-include(utility_debug_console_lite_MIMXRT1176_cm7)
+include(utility_debug_console_lite)
 
-include(utility_assert_lite_MIMXRT1176_cm7)
+include(utility_assert_lite)
 
-include(driver_lpi2c_MIMXRT1176_cm7)
+include(driver_lpi2c)
 
-include(driver_clock_MIMXRT1176_cm7)
+include(driver_clock)
 
-include(driver_common_MIMXRT1176_cm7)
+include(driver_common)
 
-include(device_MIMXRT1176_CMSIS_MIMXRT1176_cm7)
+include(device_CMSIS)
 
-include(component_lpuart_adapter_MIMXRT1176_cm7)
+include(component_lpuart_adapter)
 
-include(component_lists_MIMXRT1176_cm7)
+include(component_lists)
 
-include(driver_lpuart_MIMXRT1176_cm7)
+include(driver_lpuart)
 
-include(device_MIMXRT1176_startup_MIMXRT1176_cm7)
+include(device_startup_MIMXRT1176_cm7)
 
-include(driver_iomuxc_MIMXRT1176_cm7)
+include(driver_iomuxc)
 
-include(driver_igpio_MIMXRT1176_cm7)
+include(driver_igpio)
 
-include(driver_xip_device_MIMXRT1176_cm7)
+include(driver_xip_device)
 
-include(driver_xip_board_evkmimxrt1170_MIMXRT1176_cm7)
+include(driver_xip_board_evkmimxrt1170)
 
-include(driver_pmu_1_MIMXRT1176_cm7)
+include(driver_pmu_1)
 
-include(driver_dcdc_soc_MIMXRT1176_cm7)
+include(driver_dcdc_soc)
 
-include(driver_cache_armv7_m7_MIMXRT1176_cm7)
+include(driver_cache_armv7_m7)
 
-include(driver_anatop_ai_MIMXRT1176_cm7)
+include(driver_anatop_ai)
 
-include(CMSIS_Include_core_cm_MIMXRT1176_cm7)
+include(CMSIS_Include_core_cm)
 
 include(utilities_misc_utilities_MIMXRT1176_cm7)
 
-include(device_MIMXRT1176_system_MIMXRT1176_cm7)
+include(device_system_MIMXRT1176_cm7)
 
 
-IF(NOT DEFINED TARGET_LINK_SYSTEM_LIBRARIES)  
-    SET(TARGET_LINK_SYSTEM_LIBRARIES "-lm -lc -lgcc -lnosys")  
-ENDIF()  
+IF(NOT DEFINED TARGET_LINK_SYSTEM_LIBRARIES)
+    SET(TARGET_LINK_SYSTEM_LIBRARIES "-lm -lc -lgcc -lnosys")
+ENDIF()
 
 TARGET_LINK_LIBRARIES(${MCUX_SDK_PROJECT_NAME} PRIVATE -Wl,--start-group)
 
